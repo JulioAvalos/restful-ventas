@@ -1,0 +1,37 @@
+<div class="example-container">
+
+  <mat-form-field>
+    <mat-select placeholder="Persona" [(value)]="idPersonaSeleccionada">
+      <mat-option *ngFor="let p of personas" [value]="p.idPersona">
+        {{p.nombres}} {{p.apellidos}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Producto" [(value)]="idProductoSeleccionado">
+      <mat-option *ngFor="let p of productos" [value]="p.idProducto">
+        {{p.nombre}} - {{p.marca}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+      <input matInput placeholder="Cantidad" type="number">
+  </mat-form-field>
+
+  <!-- agregar campos para indicar cuantos se van a agregar al detalle -->
+
+  <button mat-raised-button color="primary" type="submit">
+      <mat-icon>done</mat-icon>
+      <span>Aceptar</span>
+  </button>
+  <button mat-raised-button color="accent" routerLink='/venta' type="button">
+    <mat-icon>close</mat-icon>
+    <span>Cancelar</span>
+  </button>
+
+
+
+
+</div>
