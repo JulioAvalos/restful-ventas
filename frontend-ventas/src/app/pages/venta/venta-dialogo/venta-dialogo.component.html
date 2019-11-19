@@ -1,0 +1,17 @@
+<div>
+  <h2>Detalle Venta</h2>
+  <p>Nombre: {{venta.persona.nombres}} {{venta.persona.apellidos}}</p>
+  <p>Fecha: {{ venta.fecha | date: 'dd/MM/yyyy' }}</p>
+  <p>Importe: ${{venta.importe}}</p>
+  <b>Productos: </b>
+  <ul *ngFor="let d of venta.detalleVenta; let i=index">
+      <li>
+        <p>Nombre: {{ d.producto.nombre }} </p>
+        <p>Marca: {{ d.producto.marca }} </p>
+        <p>Cantidad: {{d.cantidad}}</p>
+      </li>
+  </ul>
+  <br/>
+</div>
+
+<button mat-raised-button color="accent" (click)="cancelar()">Cerrar</button>

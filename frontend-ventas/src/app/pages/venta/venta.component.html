@@ -34,6 +34,13 @@
         <mat-cell *matCellDef="let row"> ${{row.importe}} </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-button color="primary" (click)="abrirDialogo(row)"><mat-icon>ballot</mat-icon></button>
+        </mat-cell>
+      </ng-container>
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;">
       </mat-row>

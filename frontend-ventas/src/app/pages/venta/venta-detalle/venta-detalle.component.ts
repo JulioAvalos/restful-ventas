@@ -91,10 +91,10 @@ export class VentaDetalleComponent implements OnInit {
   }
 
   aceptar() {
-    let persona = new Persona();
+    const persona = new Persona();
     persona.idPersona = this.idPersonaSeleccionada;
 
-    let ventaDto = new VentaDTO();
+    const ventaDto = new VentaDTO();
     ventaDto.persona = persona;
     ventaDto.importe = this.calcularImporteTotal();
     ventaDto.fecha = (new Date(Date.now()));

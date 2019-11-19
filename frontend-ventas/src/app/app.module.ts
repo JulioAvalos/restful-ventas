@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductoEdicionComponent } from './pages/producto/producto-edicion/producto-edicion.component';
 import { VentaComponent } from './pages/venta/venta.component';
 import { VentaDetalleComponent } from './pages/venta/venta-detalle/venta-detalle.component';
+import { VentaDialogoComponent } from './pages/venta/venta-dialogo/venta-dialogo.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,10 @@ import { VentaDetalleComponent } from './pages/venta/venta-detalle/venta-detalle
     PersonaEdicionComponent,
     ProductoEdicionComponent,
     VentaComponent,
-    VentaDetalleComponent
+    VentaDetalleComponent,
+    VentaDialogoComponent
   ],
+  entryComponents: [VentaDialogoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

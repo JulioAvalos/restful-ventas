@@ -3,6 +3,7 @@ import { MatTableDataSource, MatSort, MatPaginator, MatSnackBar, MatDialog } fro
 import { Venta } from './../../_model/venta.model';
 import { VentaService } from './../../_service/venta.service';
 import { ActivatedRoute } from '@angular/router';
+import { VentaDialogoComponent } from './venta-dialogo/venta-dialogo.component';
 
 @Component({
   selector: 'app-venta',
@@ -12,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class VentaComponent implements OnInit {
 
   dataSource: MatTableDataSource<Venta>;
-  displayedColumns = ['idVenta', 'nombre', 'importe', 'fecha'];
+  displayedColumns = ['idVenta', 'nombre', 'importe', 'fecha', 'acciones'];
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -20,8 +21,9 @@ export class VentaComponent implements OnInit {
   constructor(
     private ventaService: VentaService,
     private snack: MatSnackBar,
-    private route: ActivatedRoute
-    ) { }
+    private route: ActivatedRoute,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
 
@@ -51,6 +53,15 @@ export class VentaComponent implements OnInit {
       return data.persona.nombres.toLowerCase().includes(filter) || data.persona.apellidos.toLowerCase().includes(filter);
     };
     this.dataSource.filter = valor.trim().toLowerCase();
+  }
+
+  abrirDialogo(venta?: Venta) {
+    console.log(venta);
+    let ven = venta != null ? venta : new Venta();
+    this.dialog.open(VentaDialogoComponent, {
+      width: '350px',
+      data: ven
+    });
   }
 
 }
