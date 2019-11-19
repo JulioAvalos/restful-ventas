@@ -3,6 +3,7 @@ import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Venta } from '../_model/venta.model';
 import { Subject } from 'rxjs';
+import { VentaDTO } from '../_dto/ventaDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,19 +21,8 @@ export class VentaService {
     return this.http.get<Venta[]>(this.url);
   }
 
-  listarPorId(idVenta: number) {
-    return this.http.get<Venta>(`${this.url}/${idVenta}`);
-  }
-
-  registrar(venta: Venta) {
+  registrar(venta: VentaDTO) {
     return this.http.post(this.url, venta);
   }
 
-  modificar(venta: Venta) {
-    return this.http.put(this.url, venta);
-  }
-
-  eliminar(idVenta: number) {
-    return this.http.delete(`${this.url}/${idVenta}`);
-  }
 }

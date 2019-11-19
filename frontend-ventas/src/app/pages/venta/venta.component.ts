@@ -20,7 +20,6 @@ export class VentaComponent implements OnInit {
   constructor(
     private ventaService: VentaService,
     private snack: MatSnackBar,
-    private dialog: MatDialog,
     private route: ActivatedRoute
     ) { }
 
@@ -47,6 +46,7 @@ export class VentaComponent implements OnInit {
   }
 
   filtrar(valor: string) {
+    // se sobreescribio la implementacion del filtro para buscar segun nombre o apellido solamente...
     this.dataSource.filterPredicate = (data: Venta, filter: string) => {
       return data.persona.nombres.toLowerCase().includes(filter) || data.persona.apellidos.toLowerCase().includes(filter);
     };

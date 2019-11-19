@@ -1,37 +1,55 @@
 <div class="example-container">
 
-  <mat-form-field>
-    <mat-select placeholder="Persona" [(value)]="idPersonaSeleccionada">
-      <mat-option *ngFor="let p of personas" [value]="p.idPersona">
-        {{p.nombres}} {{p.apellidos}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <!-- <div [hidden]="true">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="ID" required formControlName="id">
+      </mat-form-field>
+    </div> -->
 
-  <mat-form-field>
-    <mat-select placeholder="Producto" [(value)]="idProductoSeleccionado">
-      <mat-option *ngFor="let p of productos" [value]="p.idProducto">
-        {{p.nombre}} - {{p.marca}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Persona" [(value)]="idPersonaSeleccionada">
+        <mat-option *ngFor="let p of personas" [value]="p.idPersona">
+          {{p.nombres}} {{p.apellidos}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-      <input matInput placeholder="Cantidad" type="number">
-  </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Producto" [(value)]="idProductoSeleccionado">
+        <mat-option *ngFor="let p of productos" [value]="p.idProducto">
+          {{p.nombre}} - {{p.marca}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <!-- agregar campos para indicar cuantos se van a agregar al detalle -->
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Cantidad" type="number" [(ngModel)]="cantidadProducto">
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">
+    <button mat-raised-button color="primary" (click)="agregar()">Agregar Detalle</button>
+
+    <mat-expansion-panel *ngFor="let d of detalleVenta; let i=index">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ i + 1 }} {{d.producto.nombre}}
+            </mat-panel-title>
+            <mat-panel-description>
+                Ver Producto
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <label for="">Cantidad: {{d.cantidad}}</label> &nbsp;
+        <button mat-raised-button color="warn" (click)="removerVenta(i)">Remover</button>
+    </mat-expansion-panel>
+
+    <!-- agregar campos para indicar cuantos se van a agregar al detalle -->
+    <button mat-raised-button color="primary" (click)="aceptar()" [disabled]="estadoBotonRegistrar()">
       <mat-icon>done</mat-icon>
-      <span>Aceptar</span>
-  </button>
-  <button mat-raised-button color="accent" routerLink='/venta' type="button">
-    <mat-icon>close</mat-icon>
-    <span>Cancelar</span>
-  </button>
+      <span>Registrar</span>
+    </button>
 
-
-
+    <button mat-raised-button color="accent" routerLink='/venta' type="button">
+      <mat-icon>close</mat-icon>
+      <span>Cancelar</span>
+    </button>
 
 </div>

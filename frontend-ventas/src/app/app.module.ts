@@ -30,8 +30,8 @@ import { VentaDetalleComponent } from './pages/venta/venta-detalle/venta-detalle
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    ReactiveFormsModule
-    // FormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
